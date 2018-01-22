@@ -1,14 +1,16 @@
 //list slot_name=["Description","bounciness","friction","density",];
+// description contains param in this specific order [wheellock,gas,breaks,mouse/key,transmission,clickshift,perms]
+// https://github.com/ShanaPearson/SC-config-slot
 
 list slot1 =["1,10,10,0,0,0,1",0.0,0.800,2000.0];
-list slot2 =["6,10,10,1,0,1,1"];
-list slot3 =["5,1,1,0,0,0,1"];
-list slot4 =["10,10,8,1,0,1,1"];
+list slot2 =["6,10,10,1,0,1,1",0.0,0.800,2000.0];
+list slot3 =["5,1,1,0,0,0,1",0.0,0.800,2000.0];
+list slot4 =["10,10,8,1,0,1,1",0.0,0.800,2000.0];
 
 //==================================================================
 
 integer listen_handler;
-list buttons_main = ["Load","Save","Close"];
+list buttons_main = ["Load","Get Config","Close"];
 list buttons_slots = ["Slot1","Slot2","Slot3","Slot4","Close"];
 
 integer menu_handler;
@@ -96,13 +98,16 @@ default
             
             if(message=="config")
             {
-                menu(llGetOwner(),"Select option",buttons_main); 
+                menu(llGetOwner(),"[SC] config menu
+                                   \n Load = load a preset from saved slot lists.
+                                   \n Get Congif = Prints out the current config of the car.
+                                   \n Close = Close the menu",buttons_main); 
             }
              if (message == "Load") {
                 menu(llGetOwner(),"Select slot",buttons_slots);
                 return;
             }   
-            if (message == "Save") {
+            if (message == "Get Config") {
                 dump();
                 return;
             }   
